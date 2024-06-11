@@ -9,6 +9,7 @@ import java.util.List;
 public class Reference {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_referencia")
     public long pk_referencia;
 
@@ -21,13 +22,25 @@ public class Reference {
     @Column(name = "anio")
     public int anio;
 
-    @Column(name = "fk_version")
+    @Column(name = "fk_version", insertable = false, updatable = false)
     private long fk_version;
 
     @OneToMany(mappedBy = "referenciaVehiculos")
     private List<Vehicle> vehiculos;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_version")
+    private Version versionVehiculo;
+
     public Reference() {
+    }
+
+    public Version getVersionVehiculo() {
+        return versionVehiculo;
+    }
+
+    public void setVersionVehiculo(Version versionVehiculo) {
+        this.versionVehiculo = versionVehiculo;
     }
 
     public List<Vehicle> getVehiculos() {

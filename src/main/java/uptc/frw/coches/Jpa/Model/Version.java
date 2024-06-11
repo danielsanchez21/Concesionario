@@ -2,10 +2,13 @@ package uptc.frw.coches.Jpa.Model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "version")
 public class Version {
  @Id
+
  @Column (name = "pk_version")
  @GeneratedValue(strategy = GenerationType.IDENTITY)
  private long idVersion;
@@ -14,9 +17,19 @@ public class Version {
  @Column(name = "descripcion")
  private String descripcion;
 
+ @OneToMany(mappedBy = "versionVehiculo")
+    private List<Reference> vehiculosVersion;
 
     public Version() {
 
+    }
+
+    public List<Reference> getVehiculosVersion() {
+        return vehiculosVersion;
+    }
+
+    public void setVehiculosVersion(List<Reference> vehiculosVersion) {
+        this.vehiculosVersion = vehiculosVersion;
     }
 
     public long getIdVersion() {
@@ -41,5 +54,14 @@ public class Version {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @Override
+    public String toString() {
+        return "Version{" +
+                "idVersion=" + idVersion +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                '}';
     }
 }

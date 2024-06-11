@@ -45,6 +45,7 @@ public class Vehicle {
     public Vehicle() {
     }
 
+
     public List<Sale> getVehicleTransfer() {
         return vehicleTransfer;
     }

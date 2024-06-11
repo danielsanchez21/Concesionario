@@ -1,9 +1,11 @@
 package uptc.frw.coches.Jpa.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import javax.xml.crypto.Data;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "vehiculo")
@@ -21,7 +23,7 @@ public class Vehicle {
     private long cilindraje;
 
     @Column(name = "precio_cesion")
-    private float precioSesion;
+    private Double precioSesion;
 
     @Column(name = "matricula")
     private String matricula;
@@ -33,7 +35,34 @@ public class Vehicle {
     @JoinColumn(name = "fk_referencia")
     private Reference referenciaVehiculos;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "vehicleSale")
+    private List<Sale> vehicleSale;
+
+    @OneToMany(mappedBy = "vehicleTransfer")
+    private List<Sale> vehicleTransfer;
+
     public Vehicle() {
+    }
+
+    public List<Sale> getVehicleTransfer() {
+        return vehicleTransfer;
+    }
+
+    public void setVehicleTransfer(List<Sale> vehicleTransfer) {
+        this.vehicleTransfer = vehicleTransfer;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public List<Sale> getVehicleSale() {
+        return vehicleSale;
+    }
+
+    public void setVehicleSale(List<Sale> vehicleSale) {
+        this.vehicleSale = vehicleSale;
     }
 
     public void setFecha(Date fecha) {
@@ -72,11 +101,11 @@ public class Vehicle {
         this.cilindraje = cilindraje;
     }
 
-    public float getPrecioSesion() {
+    public Double getPrecioSesion() {
         return precioSesion;
     }
 
-    public void setPrecioSesion(float precioSesion) {
+    public void setPrecioSesion(Double precioSesion) {
         this.precioSesion = precioSesion;
     }
 

@@ -1,6 +1,9 @@
 package uptc.frw.coches.Jpa.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "persona")
@@ -21,7 +24,30 @@ public class Person {
     @Column(name = "telefono")
     private String phoneNumber;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "personCustomer")
+    private List<Sale> saleCustomer;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "personVendor")
+    private List<Sale> saleVendor;
     public Person() {
+    }
+
+    public List<Sale> getSaleVendor() {
+        return saleVendor;
+    }
+
+    public void setSaleVendor(List<Sale> saleVendor) {
+        this.saleVendor = saleVendor;
+    }
+
+    public List<Sale> getSaleCustomer() {
+        return saleCustomer;
+    }
+
+    public void setSaleCustomer(List<Sale> saleCustomer) {
+        this.saleCustomer = saleCustomer;
     }
 
     public long getId() {

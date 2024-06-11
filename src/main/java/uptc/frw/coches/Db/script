@@ -3,7 +3,7 @@ CREATE TABLE `vehiculo` (
   `fk_referencia` integer,
   `cilindraje` integer,
   `precio_cesion` float,
-  `maricula` varchar(8),
+  `matricula` varchar(8),
   `fecha` date
 );
 CREATE TABLE `referencia` (

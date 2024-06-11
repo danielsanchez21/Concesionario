@@ -47,7 +47,7 @@ CREATE TABLE `tipoDocumento` (
 
 ALTER TABLE `vehiculo` ADD FOREIGN KEY (`fk_referencia`) REFERENCES `referencia` (`pk_referencia`);
 
-ALTER TABLE `referencia` ADD FOREIGN KEY (`pk_referencia`) REFERENCES `version` (`pk_version`);
+ALTER TABLE `referencia` ADD FOREIGN KEY (`fk_version`) REFERENCES `version` (`pk_version`);
 
 ALTER TABLE `venta` ADD FOREIGN KEY (`fk_cliente`) REFERENCES `persona` (`pk_persona`);
 

@@ -1,11 +1,6 @@
 package uptc.frw.coches.Jpa.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "venta")
@@ -14,9 +9,9 @@ public class Sale {
     @Column(name = "pk_venta")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "fk_vendedor")
+    @Column(name = "fk_vendedor",insertable = false,updatable = false)
     private long idVendor;
-    @Column(name = "fk_cliente")
+    @Column(name = "fk_cliente",insertable = false,updatable = false)
     private long idCustomer;
     @Column(name = "fk_vehiculo")
     private long idVehicle;
@@ -24,6 +19,14 @@ public class Sale {
     private Double price;
     @Column(name = "fk_vehiculo_cesion")
     private long transferVehicle;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_cliente")
+    private Person ventaCliente;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_vendedor")
+    private Person ventaVehiculo;
 
     public Sale() {
     }
@@ -74,6 +77,22 @@ public class Sale {
 
     public void setTransferVehicle(long transferVehicle) {
         this.transferVehicle = transferVehicle;
+    }
+
+    public Person getVentaCliente() {
+        return ventaCliente;
+    }
+
+    public void setVentaCliente(Person ventaCliente) {
+        this.ventaCliente = ventaCliente;
+    }
+
+    public Person getVentaVehiculo() {
+        return ventaVehiculo;
+    }
+
+    public void setVentaVehiculo(Person ventaVehiculo) {
+        this.ventaVehiculo = ventaVehiculo;
     }
 
     @Override

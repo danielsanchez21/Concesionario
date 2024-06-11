@@ -2,6 +2,8 @@ package uptc.frw.coches.Jpa.Model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "persona")
 public class Person {
@@ -20,6 +22,15 @@ public class Person {
     private String address;
     @Column(name = "telefono")
     private String phoneNumber;
+
+
+    @OneToMany(mappedBy = "ventaCliente")
+    private List<Sale> ventasCliente;
+
+
+    @OneToMany(mappedBy = "ventaVehiculo")
+    private List<Sale> ventasVendedor;
+
 
     public Person() {
     }
@@ -70,6 +81,22 @@ public class Person {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<Sale> getVentasCliente() {
+        return ventasCliente;
+    }
+
+    public void setVentasCliente(List<Sale> ventasCliente) {
+        this.ventasCliente = ventasCliente;
+    }
+
+    public List<Sale> getVentasVendedor() {
+        return ventasVendedor;
+    }
+
+    public void setVentasVendedor(List<Sale> ventasVendedor) {
+        this.ventasVendedor = ventasVendedor;
     }
 
     @Override

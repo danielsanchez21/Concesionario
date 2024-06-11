@@ -3,6 +3,7 @@ package uptc.frw.coches.Jpa.Model;
 import jakarta.persistence.*;
 
 import javax.xml.crypto.Data;
+import java.util.Date;
 
 @Entity
 @Table(name = "vehiculo")
@@ -13,7 +14,7 @@ public class Vehicle {
     @Column(name = "pk_vehiculo")
     private long id;
 
-    @Column(name = "fk_referencia")
+    @Column(name = "fk_referencia",insertable = false, updatable = false)
     private long fk_Referencia;
 
     @Column(name = "cilindraje")
@@ -26,9 +27,25 @@ public class Vehicle {
     private String matricula;
 
     @Column(name = "fecha")
-    private Data fecha;
+    private Date fecha;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_referencia")
+    private Reference referenciaVehiculos;
 
     public Vehicle() {
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public Reference getReferenciaVehiculos() {
+        return referenciaVehiculos;
+    }
+
+    public void setReferenciaVehiculos(Reference referenciaVehiculos) {
+        this.referenciaVehiculos = referenciaVehiculos;
     }
 
     public long getId() {
@@ -71,13 +88,6 @@ public class Vehicle {
         this.matricula = matricula;
     }
 
-    public Data getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Data fecha) {
-        this.fecha = fecha;
-    }
 
     @Override
     public String toString() {

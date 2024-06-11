@@ -1,9 +1,8 @@
 package uptc.frw.coches.Jpa.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "referencia")
@@ -25,7 +24,18 @@ public class Reference {
     @Column(name = "fk_version")
     private long fk_version;
 
+    @OneToMany(mappedBy = "referenciaVehiculos")
+    private List<Vehicle> vehiculos;
+
     public Reference() {
+    }
+
+    public List<Vehicle> getVehiculos() {
+        return vehiculos;
+    }
+
+    public void setVehiculos(List<Vehicle> vehiculos) {
+        this.vehiculos = vehiculos;
     }
 
     public long getPk_referencia() {

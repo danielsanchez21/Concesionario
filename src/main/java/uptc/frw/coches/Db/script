@@ -18,7 +18,7 @@ CREATE TABLE `persona` (
   `pk_persona` integer PRIMARY KEY AUTO_INCREMENT,
   `razon_social` varchar(100),
   `tipo_documento` integer,
-  `numero_documento` varchar(10),
+  `numero_documento` varchar(30),
   `direccion` varchar(100),
   `telefono` varchar(30)
 );
@@ -41,8 +41,8 @@ CREATE TABLE `version` (
 
 CREATE TABLE `tipoDocumento` (
   `pk_tipo_documento` integer PRIMARY KEY AUTO_INCREMENT,
-  `descripcion` varchar(20),
-  `siglas` varchar(2)
+  `descripcion` varchar(50),
+  `siglas` varchar(3)
 );
 
 ALTER TABLE `vehiculo` ADD FOREIGN KEY (`fk_referencia`) REFERENCES `referencia` (`pk_referencia`);
@@ -56,7 +56,7 @@ ALTER TABLE `venta` ADD FOREIGN KEY (`fk_vendedor`) REFERENCES `persona` (`pk_pe
 ALTER TABLE `venta` ADD FOREIGN KEY (`fk_vehiculo`) REFERENCES `vehiculo` (`pk_vehiculo`);
 
 
-alter table `venta` add foreign key (`fk_vehiculo`) references `vehiculo` (`pk_vehiculo`);
+alter table `venta` add foreign key (`fk_vehiculo_cesion`) references `vehiculo` (`pk_vehiculo`);
 
 alter table `persona` add foreign key (`tipo_documento`) references `tipoDocumento` (`pk_tipo_documento`);
 

@@ -1,5 +1,6 @@
 package uptc.frw.coches.Jpa.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -23,16 +24,30 @@ public class Person {
     @Column(name = "telefono")
     private String phoneNumber;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "personCustomer")
+    private List<Sale> saleCustomer;
 
-    @OneToMany(mappedBy = "ventaCliente")
-    private List<Sale> ventasCliente;
-
-
-    @OneToMany(mappedBy = "ventaVehiculo")
-    private List<Sale> ventasVendedor;
-
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "personVendor")
+    private List<Sale> saleVendor;
     public Person() {
+    }
+
+    public List<Sale> getSaleVendor() {
+        return saleVendor;
+    }
+
+    public void setSaleVendor(List<Sale> saleVendor) {
+        this.saleVendor = saleVendor;
+    }
+
+    public List<Sale> getSaleCustomer() {
+        return saleCustomer;
+    }
+
+    public void setSaleCustomer(List<Sale> saleCustomer) {
+        this.saleCustomer = saleCustomer;
     }
 
     public long getId() {
@@ -81,22 +96,6 @@ public class Person {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public List<Sale> getVentasCliente() {
-        return ventasCliente;
-    }
-
-    public void setVentasCliente(List<Sale> ventasCliente) {
-        this.ventasCliente = ventasCliente;
-    }
-
-    public List<Sale> getVentasVendedor() {
-        return ventasVendedor;
-    }
-
-    public void setVentasVendedor(List<Sale> ventasVendedor) {
-        this.ventasVendedor = ventasVendedor;
     }
 
     @Override

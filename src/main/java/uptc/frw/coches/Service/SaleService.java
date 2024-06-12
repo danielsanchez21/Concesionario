@@ -31,8 +31,8 @@ public class SaleService {
 
     }
     public Sale createSale(Sale sale){
-        Person customer = personService.getById(sale.getIdCustomer());
-        Person vendor = personService.getById(sale.getIdVendor());
+        Person customer = personService.findPersonById(sale.getIdCustomer());
+        Person vendor = personService.findPersonById(sale.getIdVendor());
         Vehicle vehiclenew = vehicleService.findVehicleById(sale.getIdVehicle());
         Vehicle vehicleOld=null;
         if (sale.getTransferVehicle() != null) {

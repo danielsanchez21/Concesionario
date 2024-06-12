@@ -2,6 +2,8 @@ package uptc.frw.coches.Jpa.Model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tipoDocumento")
 public class TypeDocument {
@@ -15,6 +17,9 @@ public class TypeDocument {
 
     @Column(name = "siglas")
     private String siglas;
+
+    @OneToMany(mappedBy = "typeDocumentsPerson")
+    public List<Person> documents;
 
     public TypeDocument() {
     }
@@ -41,6 +46,14 @@ public class TypeDocument {
 
     public void setSiglas(String siglas) {
         this.siglas = siglas;
+    }
+
+    public List<Person> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<Person> documents) {
+        this.documents = documents;
     }
 
     @Override

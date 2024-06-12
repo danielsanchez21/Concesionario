@@ -15,7 +15,7 @@ public class Person {
     private long id;
     @Column(name = "razon_social")
     private  String businessName;
-    @Column(name = "tipo_documento")
+    @Column(name = "tipo_documento",insertable = false, updatable = false)
     private  long typeDocument;
     @Column(name = "numero_documento")
     private  String numberDocument;
@@ -33,6 +33,10 @@ public class Person {
     private List<Sale> saleVendor;
     public Person() {
     }
+
+    @ManyToOne
+    @JoinColumn(name = "tipo_documento")
+    public TypeDocument typeDocumentsPerson;
 
     public List<Sale> getSaleVendor() {
         return saleVendor;
@@ -96,6 +100,14 @@ public class Person {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public TypeDocument getTypeDocumentsPerson() {
+        return typeDocumentsPerson;
+    }
+
+    public void setTypeDocumentsPerson(TypeDocument typeDocumentsPerson) {
+        this.typeDocumentsPerson = typeDocumentsPerson;
     }
 
     @Override

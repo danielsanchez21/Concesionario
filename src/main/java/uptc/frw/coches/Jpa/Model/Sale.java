@@ -40,18 +40,15 @@ public class Sale {
     private Integer transferVehicle;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_cliente")
+    @ManyToOne("fk_cliente")
     private Person personCustomer;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_vendedor")
+    @ManyToOne("fk_vendedor")
     private Person personVendor;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_vehiculo")
+    @ManyToOne("fk_vehiculo")
     private Vehicle vehicleSale;
 
     @JsonIgnore

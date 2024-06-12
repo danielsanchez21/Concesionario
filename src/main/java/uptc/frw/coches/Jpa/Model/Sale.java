@@ -40,15 +40,18 @@ public class Sale {
     private Integer transferVehicle;
 
     @JsonIgnore
-    @ManyToOne("fk_cliente")
+    @ManyToOne
+    @JoinColumn(name = "fk_cliente")
     private Person personCustomer;
 
     @JsonIgnore
-    @ManyToOne("fk_vendedor")
+    @ManyToOne
+    @JoinColumn( name = "fk_vendedor")
     private Person personVendor;
 
     @JsonIgnore
-    @ManyToOne("fk_vehiculo")
+    @ManyToOne
+    @JoinColumn(name = "fk_vehiculo")
     private Vehicle vehicleSale;
 
     @JsonIgnore

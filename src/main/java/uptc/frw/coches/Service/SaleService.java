@@ -46,6 +46,12 @@ public class SaleService {
         return saleRepository.save(sale);
     }
 
+    public Sale updateSale(long id, Double price){
+        Sale sale = findById(id);
+        sale.setPrice(price);
+        return  saleRepository.save(sale);
+    }
+
     public void deleteSale(long idSale){
         saleRepository.deleteById(idSale);
     }

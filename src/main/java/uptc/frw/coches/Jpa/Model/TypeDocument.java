@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "tipoDocumento")
+@Table(name = "tipodocumento")
 public class TypeDocument {
     @Id
     @Column(name = "pk_tipo_documento")

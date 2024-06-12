@@ -39,7 +39,7 @@ CREATE TABLE `version` (
   `descripcion` varchar(100)
 );
 
-CREATE TABLE `tipoDocumento` (
+CREATE TABLE `tipodocumento` (
   `pk_tipo_documento` integer PRIMARY KEY AUTO_INCREMENT,
   `descripcion` varchar(50),
   `siglas` varchar(3)
@@ -58,5 +58,5 @@ ALTER TABLE `venta` ADD FOREIGN KEY (`fk_vehiculo`) REFERENCES `vehiculo` (`pk_v
 
 alter table `venta` add foreign key (`fk_vehiculo_cesion`) references `vehiculo` (`pk_vehiculo`);
 
-alter table `persona` add foreign key (`tipo_documento`) references `tipoDocumento` (`pk_tipo_documento`);
+alter table `persona` add foreign key (`tipo_documento`) references `tipodocumento` (`pk_tipo_documento`);
 

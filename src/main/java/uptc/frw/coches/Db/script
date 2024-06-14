@@ -1,3 +1,4 @@
+USE concesionariosb;
 CREATE TABLE `vehiculo` (
   `pk_vehiculo` integer PRIMARY KEY AUTO_INCREMENT,
   `fk_referencia` integer,

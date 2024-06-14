@@ -14,6 +14,7 @@ import uptc.frw.coches.Jpa.Model.Sale;
 import uptc.frw.coches.Service.SaleService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("sale")
@@ -40,6 +41,11 @@ public class SaleController {
     @PutMapping("/{id}")
     public Sale updateSale(@PathVariable long id, @RequestParam Double price){
         return  saleService.updateSale(id,price);
+    }
+
+    @GetMapping("/{idVendor}/customer/{idCustomer}")
+    public Map<String, List<?>> getReport(@PathVariable long idVendor,@PathVariable long idCustomer){
+        return saleService.report(idVendor,idCustomer);
     }
 
 }

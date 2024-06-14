@@ -1,5 +1,6 @@
 package uptc.frw.coches.Jpa.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -23,11 +24,11 @@ public class Reference {
     public int anio;
 
     @Column(name = "fk_version", insertable = false, updatable = false)
-    private long fk_version;
-
+    private long fkVersion;
+    @JsonIgnore
     @OneToMany(mappedBy = "referenciaVehiculos")
     private List<Vehicle> vehiculos;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "fk_version")
     private Version versionVehiculo;
@@ -83,12 +84,12 @@ public class Reference {
         this.anio = anio;
     }
 
-    public long getFk_version() {
-        return fk_version;
+    public long getFkVersion() {
+        return fkVersion;
     }
 
-    public void setFk_version(long fk_version) {
-        this.fk_version = fk_version;
+    public void setFkVersion(long fk_version) {
+        this.fkVersion = fk_version;
     }
 
     @Override
@@ -98,7 +99,7 @@ public class Reference {
                 ", modelo='" + modelo + '\'' +
                 ", marca='" + marca + '\'' +
                 ", anio=" + anio +
-                ", fk_version=" + fk_version +
+                ", fk_version=" + fkVersion +
                 '}';
     }
 }

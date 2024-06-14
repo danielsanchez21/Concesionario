@@ -3,7 +3,6 @@ package uptc.frw.coches.Jpa.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class Vehicle {
     @Column(name = "pk_vehiculo")
     private long id;
 
-    @Column(name = "fk_referencia",insertable = false, updatable = false)
-    private long fk_Referencia;
+    @Column(name = "fk_referencia", insertable = false, updatable = false)
+    private long fkReferencia;
 
     @Column(name = "cilindraje")
     private long cilindraje;
@@ -30,7 +29,7 @@ public class Vehicle {
 
     @Column(name = "fecha")
     private Date fecha;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "fk_referencia")
     private Reference referenciaVehiculos;
@@ -38,7 +37,7 @@ public class Vehicle {
     @JsonIgnore
     @OneToMany(mappedBy = "vehicleSale")
     private List<Sale> vehicleSale;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "vehicleTransfer")
     private List<Sale> vehicleTransfer;
 
@@ -86,12 +85,12 @@ public class Vehicle {
         this.id = id;
     }
 
-    public long getFk_Referencia() {
-        return fk_Referencia;
+    public long getFkReferencia() {
+        return fkReferencia;
     }
 
-    public void setFk_Referencia(long fk_Referencia) {
-        this.fk_Referencia = fk_Referencia;
+    public void setFkReferencia(long fk_Referencia) {
+        this.fkReferencia = fk_Referencia;
     }
 
     public long getCilindraje() {
@@ -123,7 +122,7 @@ public class Vehicle {
     public String toString() {
         return "Vehicle{" +
                 "id=" + id +
-                ", fk_Referencia=" + fk_Referencia +
+                ", fk_Referencia=" + fkReferencia +
                 ", cilindraje=" + cilindraje +
                 ", precioSesion=" + precioSesion +
                 ", matricula='" + matricula + '\'' +

@@ -28,4 +28,8 @@ public class ReferenceController {
     public void deleteReferenceById(@PathVariable long id) {
         referenceService.deleteReference(id);
     }
+    @PostMapping
+    public Reference createRef( @RequestBody Reference reference){
+        return  referenceService.createReference(reference);
+    }
 }

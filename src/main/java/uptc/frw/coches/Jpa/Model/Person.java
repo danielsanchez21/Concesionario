@@ -14,11 +14,11 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "razon_social")
-    private  String businessName;
-    @Column(name = "tipo_documento",insertable = false, updatable = false)
-    private  long typeDocument;
+    private String businessName;
+    @Column(name = "tipo_documento", insertable = false, updatable = false)
+    private long typeDocument;
     @Column(name = "numero_documento")
-    private  String numberDocument;
+    private String numberDocument;
     @Column(name = "direccion")
     private String address;
     @Column(name = "telefono")
@@ -31,9 +31,11 @@ public class Person {
     @JsonIgnore
     @OneToMany(mappedBy = "personVendor")
     private List<Sale> saleVendor;
+
     public Person() {
     }
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "tipo_documento")
     public TypeDocument typeDocumentsPerson;

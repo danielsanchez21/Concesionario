@@ -1,5 +1,6 @@
 package uptc.frw.coches.Jpa.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class TypeDocument {
 
     @Column(name = "siglas")
     private String siglas;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "typeDocumentsPerson")
     public List<Person> documents;
 

@@ -28,4 +28,9 @@ public class VehicleController {
     public void deleteVehicleById(@PathVariable long id) {
         vehicleService.deleteVehicle(id);
     }
+
+    @PostMapping
+    public  Vehicle createVehicle(@RequestBody Vehicle vehicle){
+      return   vehicleService.createVehicle(vehicle);
+    }
 }

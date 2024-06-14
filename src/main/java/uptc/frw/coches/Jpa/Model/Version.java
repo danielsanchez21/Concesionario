@@ -1,5 +1,6 @@
 package uptc.frw.coches.Jpa.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -7,17 +8,17 @@ import java.util.List;
 @Entity
 @Table(name = "version")
 public class Version {
- @Id
+    @Id
 
- @Column (name = "pk_version")
- @GeneratedValue(strategy = GenerationType.IDENTITY)
- private long idVersion;
- @Column (name = "nombre")
- private String nombre;
- @Column(name = "descripcion")
- private String descripcion;
-
- @OneToMany(mappedBy = "versionVehiculo")
+    @Column(name = "pk_version")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long idVersion;
+    @Column(name = "nombre")
+    private String nombre;
+    @Column(name = "descripcion")
+    private String descripcion;
+    @JsonIgnore
+    @OneToMany(mappedBy = "versionVehiculo")
     private List<Reference> vehiculosVersion;
 
     public Version() {

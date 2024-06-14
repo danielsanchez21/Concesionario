@@ -6,8 +6,8 @@ import uptc.frw.coches.Jpa.Model.TypeDocument;
 import uptc.frw.coches.Service.TypeDocumentService;
 
 import java.util.List;
-@RestController("typeDocument")
-@RequestMapping
+@RestController
+@RequestMapping("typeDocument")
 public class TypeDocumentController {
     @Autowired
     private TypeDocumentService typeDocumentService;
